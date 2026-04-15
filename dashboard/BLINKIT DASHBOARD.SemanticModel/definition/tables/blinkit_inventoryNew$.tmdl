@@ -1,0 +1,58 @@
+table blinkit_inventoryNew$
+	lineageTag: 9ff2b4b9-e862-4858-a192-1e44a51818d0
+
+	column product_id
+		dataType: double
+		lineageTag: 37431d7d-db39-4493-a3d9-e7c9b078346c
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d69835b4-a58e-4819-8858-41599c92f049
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: d8fb7bab-ab18-4ad1-9dfa-777aea4864a1
+			defaultHierarchy: LocalDateTable_e112c2f8-5ecf-4cfb-ae15-3c4660b15aa2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column stock_received
+		dataType: double
+		lineageTag: 120b3052-b332-4fe5-9341-055b0991bc05
+		summarizeBy: sum
+		sourceColumn: stock_received
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column damaged_stock
+		dataType: double
+		lineageTag: 8db3a296-fd8a-416f-a08d-b055e8a249a1
+		summarizeBy: sum
+		sourceColumn: damaged_stock
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition blinkit_inventoryNew$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_inventoryNew$" = Source{[Schema="dbo",Item="blinkit_inventoryNew$"]}[Data]
+				in
+				    #"dbo_blinkit_inventoryNew$"
+
+	annotation PBI_ResultType = Table
+

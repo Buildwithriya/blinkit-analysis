@@ -1,0 +1,43 @@
+table 'feedback and rating'
+	lineageTag: 085f4b03-5416-4af4-b681-99cf4f734fa4
+
+	column category
+		dataType: string
+		lineageTag: 6206d6bc-d7c5-477b-ae8e-8e7554f0fe2c
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Average_Rating
+		dataType: double
+		lineageTag: 579150e1-b973-4ebe-b197-0f429da5ab4f
+		summarizeBy: none
+		sourceColumn: Average_Rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dcf4699-dfdc-4bbd-a32f-4a284dc80996
+		summarizeBy: none
+		sourceColumn: total_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'feedback and rating' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("TZDNbsIwEIRfxfIZodT56xlQCpWQkJB6SXNYzNJYBLta24fw9GBDMKc9zDc7O9u2fK9Bni379VkmKrb1WvYKLZ/xfJ4V9yFq3s1a/kVGIo0Tt3fwPzwxUQasiNjSDEe2IqXTym+v5ETWgRSR3CFZo2FgSyCMai6CWkZ1BSqFLQjhfALrHlgeRvZc4t78VfKvjbfYh2OSXKc2ux7oAnKMQvGZfBttHWg3JTdkrqhZY8wxorHpI7ohr9yr5A/+oYPD9JJSpKwFHMZ0RRmO/Kh4190A", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [category = _t, Average_Rating = _t, total_reviews = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"category", type text}, {"Average_Rating", type number}, {"total_reviews", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

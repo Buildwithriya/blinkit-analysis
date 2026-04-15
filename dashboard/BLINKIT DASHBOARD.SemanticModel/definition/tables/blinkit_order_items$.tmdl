@@ -1,0 +1,54 @@
+table blinkit_order_items$
+	lineageTag: 50cbb92b-d07e-42d8-a855-c9cafaf0a850
+
+	column order_id
+		dataType: double
+		lineageTag: 7ec0817b-e0de-40a0-9c93-eecb66ac1329
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_id
+		dataType: double
+		lineageTag: c92c6840-25e3-401d-8242-a428777882c9
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity
+		dataType: double
+		lineageTag: 9f245af1-7fc1-4b0f-a909-8eb4b0a684e4
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit_price
+		dataType: double
+		lineageTag: 058c3edb-c488-427c-9afd-8210edba8b15
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition blinkit_order_items$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_order_items$" = Source{[Schema="dbo",Item="blinkit_order_items$"]}[Data]
+				in
+				    #"dbo_blinkit_order_items$"
+
+	annotation PBI_ResultType = Table
+

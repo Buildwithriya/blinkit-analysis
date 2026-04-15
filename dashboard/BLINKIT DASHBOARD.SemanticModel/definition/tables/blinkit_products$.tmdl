@@ -1,0 +1,108 @@
+table blinkit_products$
+	lineageTag: de86a337-023e-4562-a791-92749ff1577e
+
+	column product_id
+		dataType: double
+		lineageTag: bb012f41-3067-42c8-a4c5-3a306266d162
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_name
+		dataType: string
+		lineageTag: ae56cc5c-9578-4958-b168-38f4c29f9d11
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 786b927c-b644-49ca-a735-254767562ef8
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column brand
+		dataType: string
+		lineageTag: b39abec4-9893-41b9-9941-dcdfde2e6872
+		summarizeBy: none
+		sourceColumn: brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: 3b1b53d0-8ea2-4607-a085-50e547259f27
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mrp
+		dataType: double
+		lineageTag: 26479d61-ec4a-465f-bec6-bf449708a762
+		summarizeBy: sum
+		sourceColumn: mrp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column margin_percentage
+		dataType: double
+		lineageTag: 5215c3a5-aa55-4de2-8a19-445d95ea6afe
+		summarizeBy: sum
+		sourceColumn: margin_percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column shelf_life_days
+		dataType: double
+		lineageTag: fa7b3eef-d84e-4db4-bf48-f7d09cf21abe
+		summarizeBy: sum
+		sourceColumn: shelf_life_days
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_stock_level
+		dataType: double
+		lineageTag: 48a7d10f-4b22-4e85-9323-4a2138b8b8f2
+		summarizeBy: sum
+		sourceColumn: min_stock_level
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_stock_level
+		dataType: double
+		lineageTag: 732bcf03-f20b-4aad-8107-d91439a356b8
+		summarizeBy: sum
+		sourceColumn: max_stock_level
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition blinkit_products$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_products$" = Source{[Schema="dbo",Item="blinkit_products$"]}[Data]
+				in
+				    #"dbo_blinkit_products$"
+
+	annotation PBI_ResultType = Table
+

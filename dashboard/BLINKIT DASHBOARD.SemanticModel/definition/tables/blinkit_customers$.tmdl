@@ -1,0 +1,118 @@
+table blinkit_customers$
+	lineageTag: 92cd9433-50bb-4e93-83da-05177b7d3103
+
+	column customer_id
+		dataType: double
+		lineageTag: 0b5f3f96-3896-4b16-af86-449cfe074648
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_name
+		dataType: string
+		lineageTag: 05b24871-b712-48ad-9e0c-8ea05d26d077
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: 3b691ec9-8512-472b-82ad-0c818348b573
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: double
+		lineageTag: 4246a8c9-5a3e-4db3-888b-63bdd22528d9
+		summarizeBy: sum
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column address
+		dataType: string
+		lineageTag: ee662782-486e-42fe-b243-14e8360cba87
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		lineageTag: 3e3c000b-19b0-4e28-a754-86de5be00231
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column pincode
+		dataType: double
+		lineageTag: 11f50260-f1eb-4f44-b2c2-3665aee258e6
+		summarizeBy: sum
+		sourceColumn: pincode
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column registration_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 12edff36-cea1-4b09-b34d-ebf71ea7caeb
+		summarizeBy: none
+		sourceColumn: registration_date
+
+		variation Variation
+			isDefault
+			relationship: 841abcbb-da28-42bf-8170-cffb0a839905
+			defaultHierarchy: LocalDateTable_b8f57d20-cfdb-4bea-9292-a42fefbcfaf8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_segment
+		dataType: string
+		lineageTag: bec32d3f-bc91-4db4-9697-bd1d5f587786
+		summarizeBy: none
+		sourceColumn: customer_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_orders
+		dataType: double
+		lineageTag: 2c6e1534-d3e6-4fbc-bd20-bd8df713f2fa
+		summarizeBy: sum
+		sourceColumn: total_orders
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_order_value
+		dataType: double
+		lineageTag: 0d5f1390-f15c-41bc-80c9-0784a819e62c
+		summarizeBy: sum
+		sourceColumn: avg_order_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition blinkit_customers$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_customers$" = Source{[Schema="dbo",Item="blinkit_customers$"]}[Data]
+				in
+				    #"dbo_blinkit_customers$"
+
+	annotation PBI_ResultType = Table
+

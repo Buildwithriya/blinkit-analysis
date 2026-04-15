@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "BLINKIT DASHBOARD"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9eebee9a-b0b0-45f9-baf1-9d2abee62d31"
+  }
+}

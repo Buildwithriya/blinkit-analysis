@@ -1,0 +1,107 @@
+table blinkit_customer_feedback$
+	lineageTag: 9abf16b7-388b-47d9-9d50-39cb345a47e0
+
+	measure 'TOTAL SALES' = SUM('blinkit_orders$'[order_total])
+		lineageTag: dc27f48d-1a16-4651-afe6-9f81385492e7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AVERAGE ORDER VALUE' = AVERAGE('blinkit_orders$'[order_total])
+		lineageTag: 46424177-4713-48b2-9433-6036b97f383c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AVERAGE ROAS' = DIVIDE(SUM('blinkit_marketing_performance$'[revenue_generated]),SUM('blinkit_marketing_performance$'[spend]))
+		lineageTag: 89fbefcb-76a8-4d30-85d0-5e006d4ae9f7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column feedback_id
+		dataType: double
+		lineageTag: 1dea1480-19f6-4dd2-82ac-ce67f547bdb0
+		summarizeBy: sum
+		sourceColumn: feedback_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column order_id
+		dataType: double
+		lineageTag: e2d4c825-10e6-434c-ba5b-81171d3525de
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_id
+		dataType: double
+		lineageTag: 37d32c8a-3278-4710-9f43-22bc3c5ff32e
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rating
+		dataType: double
+		lineageTag: f9992151-e619-49d2-bb78-e2cbf6835361
+		summarizeBy: sum
+		sourceColumn: rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column feedback_text
+		dataType: string
+		lineageTag: 77d25a7c-9233-40b7-8cdf-bbf0065d5e11
+		summarizeBy: none
+		sourceColumn: feedback_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column feedback_category
+		dataType: string
+		lineageTag: 2003a9a5-d4cc-4dd3-9750-9837ebb4ec4a
+		summarizeBy: none
+		sourceColumn: feedback_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column sentiment
+		dataType: string
+		lineageTag: 3c3b5657-953a-4512-b1e1-07972ebed6c6
+		summarizeBy: none
+		sourceColumn: sentiment
+
+		annotation SummarizationSetBy = Automatic
+
+	column feedback_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b906ba6f-cce2-4477-a54e-9c935133d9e3
+		summarizeBy: none
+		sourceColumn: feedback_date
+
+		variation Variation
+			isDefault
+			relationship: caa5ab4a-f966-4bd0-9414-fa0e5acce19b
+			defaultHierarchy: LocalDateTable_2aa89fdd-6f4c-4f0f-8be4-ac9bd2294f8c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition blinkit_customer_feedback$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_customer_feedback$" = Source{[Schema="dbo",Item="blinkit_customer_feedback$"]}[Data]
+				in
+				    #"dbo_blinkit_customer_feedback$"
+
+	annotation PBI_ResultType = Table
+

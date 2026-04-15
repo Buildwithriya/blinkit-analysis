@@ -1,0 +1,122 @@
+table blinkit_orders$
+	lineageTag: 1c26208f-18f6-4a87-8233-e78ae9ce0687
+
+	column order_id
+		dataType: double
+		lineageTag: 054f7e41-b1e7-450a-90fb-10069aa4be04
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_id
+		dataType: double
+		lineageTag: 756be3b5-10d7-4d47-8d16-44a2a5125c0e
+		summarizeBy: sum
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column order_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a5a174c2-7dc5-4a58-996b-45204fed164a
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: 2ebe709f-7fd6-4775-9f9c-933e063f3b0a
+			defaultHierarchy: LocalDateTable_9ec61e1c-cdc8-4519-8699-0c6436d01086.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column promised_delivery_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 06b4c069-a323-4472-a5be-02b00c739098
+		summarizeBy: none
+		sourceColumn: promised_delivery_time
+
+		variation Variation
+			isDefault
+			relationship: c43073eb-7765-4631-80dd-fa4b34a01636
+			defaultHierarchy: LocalDateTable_1f7aba7e-cd3f-4e49-a02b-9d894c3a5da3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_delivery_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a417e596-1142-4872-a5fd-d10d4dbf56aa
+		summarizeBy: none
+		sourceColumn: actual_delivery_time
+
+		variation Variation
+			isDefault
+			relationship: 7ac4df89-b4f7-45b1-9fba-3f04faee573e
+			defaultHierarchy: LocalDateTable_3d0fc9f6-7c26-4d34-b71f-8b0c94f8eeb5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_status
+		dataType: string
+		lineageTag: 1b5d00c5-da14-4e92-9538-ca58966195cd
+		summarizeBy: none
+		sourceColumn: delivery_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_total
+		dataType: double
+		lineageTag: 94da5427-956b-4c75-a236-1f1ecc03935e
+		summarizeBy: sum
+		sourceColumn: order_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column payment_method
+		dataType: string
+		lineageTag: af1b0823-5e56-4dd1-838d-63f2bc827f64
+		summarizeBy: none
+		sourceColumn: payment_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_partner_id
+		dataType: double
+		lineageTag: ac067631-4507-4226-afc7-a05caf49a4de
+		summarizeBy: sum
+		sourceColumn: delivery_partner_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column store_id
+		dataType: double
+		lineageTag: e82b41f9-41d6-49da-8214-12e736aa954f
+		summarizeBy: sum
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition blinkit_orders$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_orders$" = Source{[Schema="dbo",Item="blinkit_orders$"]}[Data]
+				in
+				    #"dbo_blinkit_orders$"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,116 @@
+relationship caa5ab4a-f966-4bd0-9414-fa0e5acce19b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_customer_feedback$.feedback_date
+	toColumn: LocalDateTable_2aa89fdd-6f4c-4f0f-8be4-ac9bd2294f8c.Date
+
+relationship 841abcbb-da28-42bf-8170-cffb0a839905
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_customers$.registration_date
+	toColumn: LocalDateTable_b8f57d20-cfdb-4bea-9292-a42fefbcfaf8.Date
+
+relationship 1bab4b4b-57e0-46c9-84d8-81dffd5234cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_delivery_performance$.promised_time
+	toColumn: LocalDateTable_63095db1-22c6-4480-a7d6-a3e2f38eb7e7.Date
+
+relationship 1306bccb-d11d-41b1-b3cd-d2e229a529fb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_delivery_performance$.actual_time
+	toColumn: LocalDateTable_c0aa210e-7590-47fd-a458-52a49501d13b.Date
+
+relationship 5391f020-e16e-44f1-85d0-eeeaf11cb13a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_delivery_performance$.only_date
+	toColumn: LocalDateTable_18bf00cc-210b-429b-8673-c65ff0c695bc.Date
+
+relationship a2d1ba33-46b3-46fa-8295-9ea49b67fdbf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_inventory$.date
+	toColumn: LocalDateTable_178d75c9-8188-4bfa-9b67-deb870384387.Date
+
+relationship d795e661-6b17-407b-84ef-665e200ed059
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_marketing_performance$.date
+	toColumn: LocalDateTable_3658d0b0-5621-46bc-823a-13a21b86414e.Date
+
+relationship 2ebe709f-7fd6-4775-9f9c-933e063f3b0a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_orders$.order_date
+	toColumn: LocalDateTable_9ec61e1c-cdc8-4519-8699-0c6436d01086.Date
+
+relationship c43073eb-7765-4631-80dd-fa4b34a01636
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_orders$.promised_delivery_time
+	toColumn: LocalDateTable_1f7aba7e-cd3f-4e49-a02b-9d894c3a5da3.Date
+
+relationship 7ac4df89-b4f7-45b1-9fba-3f04faee573e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_orders$.actual_delivery_time
+	toColumn: LocalDateTable_3d0fc9f6-7c26-4d34-b71f-8b0c94f8eeb5.Date
+
+relationship d8fb7bab-ab18-4ad1-9dfa-777aea4864a1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: blinkit_inventoryNew$.date
+	toColumn: LocalDateTable_e112c2f8-5ecf-4cfb-ae15-3c4660b15aa2.Date
+
+relationship AutoDetected_85be18db-b0ec-4bce-ac1b-28c155e6768f
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: blinkit_delivery_performance$.order_id
+	toColumn: blinkit_customer_feedback$.order_id
+
+relationship AutoDetected_a59ae4d0-5315-4ee6-bb75-ee3c78ffc550
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: blinkit_order_items$.order_id
+	toColumn: blinkit_customer_feedback$.order_id
+
+relationship AutoDetected_3fd94d7e-c7c3-4407-b6fe-17fd4aa4303b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: blinkit_orders$.order_id
+	toColumn: blinkit_customer_feedback$.order_id
+
+relationship AutoDetected_7125205e-38ec-45d2-aee0-f867a5d3bc1e
+	fromColumn: blinkit_customer_feedback$.customer_id
+	toColumn: blinkit_customers$.customer_id
+
+relationship AutoDetected_6cafc37f-cc35-4112-86fb-48bf70fb8fb8
+	isActive: false
+	fromColumn: blinkit_orders$.customer_id
+	toColumn: blinkit_customers$.customer_id
+
+relationship AutoDetected_12545d01-eb04-496d-b808-f0077c42c5f2
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: blinkit_orders$.delivery_partner_id
+	toColumn: blinkit_delivery_performance$.delivery_partner_id
+
+relationship AutoDetected_2514d41a-fb47-423c-b134-dd02d2001f97
+	fromColumn: blinkit_inventory$.product_id
+	toColumn: blinkit_order_items$.product_id
+
+relationship AutoDetected_2c2c12e7-5a6f-4832-a24f-d09a12e17bac
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: blinkit_products$.product_id
+	toColumn: blinkit_order_items$.product_id
+
+relationship AutoDetected_00f82047-f400-4006-b011-23f91f3ee6c4
+	fromColumn: blinkit_inventoryNew$.product_id
+	toColumn: blinkit_order_items$.product_id
+
+relationship AutoDetected_7a2fb211-2fb6-485d-9a2f-70c04b3d0900
+	fromColumn: blinkit_products$.category
+	toColumn: 'feedback and rating'.category
+
+relationship AutoDetected_4d877d00-b1c4-4886-b432-442fb521259e
+	fromColumn: blinkit_delivery_performance$.delivery_status
+	toColumn: 'DELIVERY DELAY ANALYSIS'.delivery_status
+
+relationship AutoDetected_e2136333-01fc-4a44-b267-d12bf1218488
+	isActive: false
+	fromColumn: blinkit_orders$.delivery_status
+	toColumn: 'DELIVERY DELAY ANALYSIS'.delivery_status
+

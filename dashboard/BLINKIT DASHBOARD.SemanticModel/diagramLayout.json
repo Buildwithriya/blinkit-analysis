@@ -1,0 +1,164 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 788,
+        "y": 232
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 485.69733157547819,
+            "y": 531.758057781201
+          },
+          "nodeIndex": "blinkit_customer_feedback$",
+          "nodeLineageTag": "9abf16b7-388b-47d9-9d50-39cb345a47e0",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 607.019868753043
+          },
+          "nodeIndex": "blinkit_customers$",
+          "nodeLineageTag": "92cd9433-50bb-4e93-83da-05177b7d3103",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 632.44540388517646,
+            "y": 857.31328619837859
+          },
+          "nodeIndex": "blinkit_delivery_performance$",
+          "nodeLineageTag": "1630a171-dd58-40db-98a5-9e61033b319f",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 201.03004668074436,
+            "y": 74.67134995439369
+          },
+          "nodeIndex": "blinkit_inventory$",
+          "nodeLineageTag": "4ecfb986-0f11-418b-bee3-80c6c93ad325",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 771.14531759831982,
+            "y": 303.07787527501227
+          },
+          "nodeIndex": "blinkit_inventoryNew$",
+          "nodeLineageTag": "9ff2b4b9-e862-4858-a192-1e44a51818d0",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1005.1453175983198,
+            "y": 453.65979021201827
+          },
+          "nodeIndex": "blinkit_marketing_performance$",
+          "nodeLineageTag": "fc209fdf-3449-42db-b5d4-b99be3d5f6df",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 427.38238278602131,
+            "y": 303.10172041423061
+          },
+          "nodeIndex": "blinkit_order_items$",
+          "nodeLineageTag": "50cbb92b-d07e-42d8-a855-c9cafaf0a850",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 338.72451827913238,
+            "y": 857.31958042403653
+          },
+          "nodeIndex": "blinkit_orders$",
+          "nodeLineageTag": "1c26208f-18f6-4a87-8233-e78ae9ce0687",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 537.48438939997459,
+            "y": -50
+          },
+          "nodeIndex": "blinkit_products$",
+          "nodeLineageTag": "de86a337-023e-4562-a791-92749ff1577e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1239.1453175983197,
+            "y": 527.65979021201827
+          },
+          "nodeIndex": "feedback and rating",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1473.1453175983197,
+            "y": 527.65979021201827
+          },
+          "nodeIndex": "DELIVERY DELAY ANALYSIS",
+          "nodeLineageTag": "6c9a05b9-0bae-4040-9227-088691bfe50a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

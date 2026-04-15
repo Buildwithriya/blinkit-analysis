@@ -1,0 +1,42 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["blinkit_customer_feedback$","blinkit_customers$","blinkit_delivery_performance$","blinkit_inventory$","blinkit_marketing_performance$","blinkit_order_items$","blinkit_orders$","blinkit_products$","blinkit_inventoryNew$","feedback and rating","DELIVERY DELAY ANALYSIS"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1602.0 (25.07)+10647c9fa319b5e39936cdb21328038c371d1fe4
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table blinkit_customer_feedback$
+ref table DateTableTemplate_3ee3064e-a1b0-4b80-b253-19c76c124a17
+ref table LocalDateTable_2aa89fdd-6f4c-4f0f-8be4-ac9bd2294f8c
+ref table blinkit_customers$
+ref table LocalDateTable_b8f57d20-cfdb-4bea-9292-a42fefbcfaf8
+ref table blinkit_delivery_performance$
+ref table LocalDateTable_63095db1-22c6-4480-a7d6-a3e2f38eb7e7
+ref table LocalDateTable_c0aa210e-7590-47fd-a458-52a49501d13b
+ref table LocalDateTable_18bf00cc-210b-429b-8673-c65ff0c695bc
+ref table blinkit_inventory$
+ref table LocalDateTable_178d75c9-8188-4bfa-9b67-deb870384387
+ref table blinkit_marketing_performance$
+ref table LocalDateTable_3658d0b0-5621-46bc-823a-13a21b86414e
+ref table blinkit_order_items$
+ref table blinkit_orders$
+ref table LocalDateTable_9ec61e1c-cdc8-4519-8699-0c6436d01086
+ref table LocalDateTable_1f7aba7e-cd3f-4e49-a02b-9d894c3a5da3
+ref table LocalDateTable_3d0fc9f6-7c26-4d34-b71f-8b0c94f8eeb5
+ref table blinkit_products$
+ref table blinkit_inventoryNew$
+ref table LocalDateTable_e112c2f8-5ecf-4cfb-ae15-3c4660b15aa2
+ref table 'feedback and rating'
+ref table 'DELIVERY DELAY ANALYSIS'
+
+ref cultureInfo en-US
+

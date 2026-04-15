@@ -1,0 +1,127 @@
+table blinkit_marketing_performance$
+	lineageTag: fc209fdf-3449-42db-b5d4-b99be3d5f6df
+
+	measure 'CUSTOMER ACQUISITION COST' = DIVIDE(SUM('blinkit_marketing_performance$'[spend]),SUM('blinkit_marketing_performance$'[conversions]))
+		lineageTag: 659c2cbd-555f-49c0-91d8-c4b86ee4955f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column campaign_id
+		dataType: double
+		lineageTag: 26d35deb-ea5d-45f2-86b9-ffa449379846
+		summarizeBy: sum
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column campaign_name
+		dataType: string
+		lineageTag: c34dd2b1-70a9-4639-8a5d-b08017819b64
+		summarizeBy: none
+		sourceColumn: campaign_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 28cde158-d730-4b8c-91e9-dda0f72714e6
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: d795e661-6b17-407b-84ef-665e200ed059
+			defaultHierarchy: LocalDateTable_3658d0b0-5621-46bc-823a-13a21b86414e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_audience
+		dataType: string
+		lineageTag: 5ef0b1d9-622d-4b71-84cd-ce1d03df1615
+		summarizeBy: none
+		sourceColumn: target_audience
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: 0452c4b2-39f8-441b-bf6e-363233bde976
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column impressions
+		dataType: double
+		lineageTag: b8e0aaf4-9bdc-45ae-aabd-a5e587bee008
+		summarizeBy: sum
+		sourceColumn: impressions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column clicks
+		dataType: double
+		lineageTag: a8dc707b-e86d-4cdb-9382-4765598f50ad
+		summarizeBy: sum
+		sourceColumn: clicks
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column conversions
+		dataType: double
+		lineageTag: d44f9d66-b0ca-4734-aac2-b603ba351ab3
+		summarizeBy: sum
+		sourceColumn: conversions
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column spend
+		dataType: double
+		lineageTag: 332e6498-44a9-4c7c-8628-ef67f579796f
+		summarizeBy: sum
+		sourceColumn: spend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revenue_generated
+		dataType: double
+		lineageTag: c0a9c7c8-051c-4e97-abff-605444ad17e5
+		summarizeBy: sum
+		sourceColumn: revenue_generated
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column roas
+		dataType: double
+		lineageTag: ab215d8b-620d-46a0-bb7a-c095da96c3f9
+		summarizeBy: sum
+		sourceColumn: roas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition blinkit_marketing_performance$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_marketing_performance$" = Source{[Schema="dbo",Item="blinkit_marketing_performance$"]}[Data]
+				in
+				    #"dbo_blinkit_marketing_performance$"
+
+	annotation PBI_ResultType = Table
+

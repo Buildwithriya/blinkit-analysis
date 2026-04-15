@@ -1,0 +1,46 @@
+table 'DELIVERY DELAY ANALYSIS'
+	lineageTag: 6c9a05b9-0bae-4040-9227-088691bfe50a
+
+	measure 'AVG MARGIN' = AVERAGE('blinkit_products$'[margin_percentage])
+		lineageTag: 586608b7-98e6-4054-b06f-8e1e6f64c791
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivery_status
+		dataType: string
+		lineageTag: f06ed6d9-b6e0-4489-b205-ab2d2f8f95ee
+		summarizeBy: none
+		sourceColumn: delivery_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: d49fb25a-f867-4f84-b591-2afce4632071
+		summarizeBy: none
+		sourceColumn: total_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column percentage
+		dataType: double
+		lineageTag: 2edb2719-69c2-485b-a833-e7c9eff8fe5b
+		summarizeBy: none
+		sourceColumn: percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'DELIVERY DELAY ANALYSIS' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCs5Mz8tMy0xOzCvJqVRwSc1JrExNUdJRMrE0BpKWehZmBnCgFKsD1JCTmZ6BqtbQwNgcSBkZ6JmboKn2z1MIycxNBcoam5gbACkzSz0kNUBFsQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [delivery_status = _t, total_orders = _t, percentage = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"delivery_status", type text}, {"total_orders", Int64.Type}, {"percentage", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

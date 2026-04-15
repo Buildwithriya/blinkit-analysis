@@ -1,0 +1,112 @@
+table blinkit_delivery_performance$
+	lineageTag: 1630a171-dd58-40db-98a5-9e61033b319f
+
+	column order_id
+		dataType: double
+		lineageTag: ba5f089f-e057-44a3-8a86-2f2e6dcca42f
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivery_partner_id
+		dataType: double
+		lineageTag: afb8b58c-36ae-4b11-b6e4-5a203c0ff9ca
+		summarizeBy: sum
+		sourceColumn: delivery_partner_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column promised_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e454f8e3-053b-4432-a172-83588ba1a64a
+		summarizeBy: none
+		sourceColumn: promised_time
+
+		variation Variation
+			isDefault
+			relationship: 1bab4b4b-57e0-46c9-84d8-81dffd5234cb
+			defaultHierarchy: LocalDateTable_63095db1-22c6-4480-a7d6-a3e2f38eb7e7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: aa892449-350c-4572-92ad-4e6e3a33aae1
+		summarizeBy: none
+		sourceColumn: actual_time
+
+		variation Variation
+			isDefault
+			relationship: 1306bccb-d11d-41b1-b3cd-d2e229a529fb
+			defaultHierarchy: LocalDateTable_c0aa210e-7590-47fd-a458-52a49501d13b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column only_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2ac11faf-5601-45f2-9e32-7f21657d95c6
+		summarizeBy: none
+		sourceColumn: only_date
+
+		variation Variation
+			isDefault
+			relationship: 5391f020-e16e-44f1-85d0-eeeaf11cb13a
+			defaultHierarchy: LocalDateTable_18bf00cc-210b-429b-8673-c65ff0c695bc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_time_minutes
+		dataType: double
+		lineageTag: 7cfa63c4-832c-4f3b-8b7d-36376c69632f
+		summarizeBy: sum
+		sourceColumn: delivery_time_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column distance_km
+		dataType: double
+		lineageTag: 018f01f5-19ab-447b-9dc2-662d23a69283
+		summarizeBy: sum
+		sourceColumn: distance_km
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delivery_status
+		dataType: string
+		lineageTag: 8ea1d3f3-40a3-44da-907d-8bbf8c772307
+		summarizeBy: none
+		sourceColumn: delivery_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column reasons_if_delayed
+		dataType: string
+		lineageTag: 6bf6838a-53f4-40de-a988-57bcbaf6d416
+		summarizeBy: none
+		sourceColumn: reasons_if_delayed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition blinkit_delivery_performance$ = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("DESKTOP-IGFEKQR\SQLEXPRESS", "blinkit"),
+				    #"dbo_blinkit_delivery_performance$" = Source{[Schema="dbo",Item="blinkit_delivery_performance$"]}[Data]
+				in
+				    #"dbo_blinkit_delivery_performance$"
+
+	annotation PBI_ResultType = Table
+

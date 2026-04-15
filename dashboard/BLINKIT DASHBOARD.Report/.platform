@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "BLINKIT DASHBOARD"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "18add05d-aaf3-44cf-a8b6-fb8296cf9480"
+  }
+}
